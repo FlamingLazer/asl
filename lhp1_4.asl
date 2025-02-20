@@ -13,6 +13,24 @@ startup {
     settings.Add("split_nosave", false, "Split on status screen and lesson completion (N0CUT5 Without Saves)");
     settings.Add("split_room", false, "Split on room transitions");
     //settings.Add("start_newgame", false, "Start on New Game");
+
+    vars.preventSplit = new Stopwatch();
+}
+
+update {
+  if (vars.preventSplit.ElapsedMilliseconds > 15000) vars.preventSplit.Reset();
+}
+
+onStart {
+  vars.preventSplit.Start();
+}
+
+onReset {
+    vars.preventSplit.Reset();
+}
+
+onSplit {
+  vars.preventSplit.Start();
 }
 
 isLoading
@@ -28,7 +46,7 @@ start
 split
 {
     return (settings["split_save"] && current.Head && !old.Head) ||
-    (settings["split_nosave"] && old.goldBrickCount != current.goldBrickCount && current.goldBrickCount != 0) ||
+    (settings["split_nosave"] && old.goldBrickCount != current.goldBrickCount && current.goldBrickCount != 0 && !vars.preventSplit.IsRunning) ||
     (settings["split_room"] && current.Loading && !old.Loading);
 }
 
