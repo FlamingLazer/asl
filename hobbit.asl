@@ -1,5 +1,5 @@
 //Created by FlamingLazer and Biksel
-
+//Works on DX9 Version
 state("LEGOHobbit")
 {
     int endCutscene: 0x181E5D0;
