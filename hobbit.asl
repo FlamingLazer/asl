@@ -2,7 +2,7 @@
 //Works on DX9 Version
 state("LEGOHobbit")
 {
-    int endCutscene: 0x181E5D0;
+    uint endCutscene: 0x169CA48;
     int bricks: 0x0167BB70, 0x1C, 0x168;
     int levelLoad: 0x167A828;
     int load: 0x18006E0;
@@ -38,7 +38,7 @@ update {
     }
 }
 split {
-    return (settings["restrictedAny"] || settings["any"]) && (old.endCutscene != current.endCutscene && current.endCutscene == 462 && current.bricks != 0) ||
+    return (settings["restrictedAny"] || settings["any"]) && ((old.endCutscene != current.endCutscene) && current.endCutscene == 3515856204 && current.bricks != 0) ||
     (settings["restrictedAny"] || settings["any"] || settings["freeplay"]) && (old.statusScreen != current.statusScreen && old.statusScreen == 1) ||
     settings["any"] && (old.levelLoad == 0 && current.levelLoad == 1 && current.statusScreen != 1 && vars.count != 2);
 }
