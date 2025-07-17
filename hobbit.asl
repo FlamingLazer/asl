@@ -5,7 +5,8 @@ state("LEGOHobbit")
     uint endCutscene: 0x169CA48;
     int bricks: 0x0167BB70, 0x1C, 0x168;
     int levelLoad: 0x167A828;
-    int load: 0x18006E0;
+    int load: 0x17D8844;
+    int loadOld: 0x18006E0;
     int statusScreen: 0x01792BC8, 0x10, 0x14, 0x574;
     int roomNumber: 0x1802B08;
 }
@@ -18,7 +19,7 @@ startup{
 
 isLoading
 {
-    return current.load == 1 && current.statusScreen == 0;
+    return current.load == 0 && current.statusScreen == 0;
 }
 
 init {
@@ -29,7 +30,7 @@ onStart{
     vars.count = 0;
 }
 start {
-    return settings["startGKME"] && ((current.roomNumber == 1 || current.roomNumber == 2) && current.bricks == 0 && old.load == 1 && current.load == 0);
+    return settings["startGKME"] && ((current.roomNumber == 1 || current.roomNumber == 2) && current.bricks == 0 && old.loadOld == 1 && current.loadOld == 0);
 }
 
 update {
