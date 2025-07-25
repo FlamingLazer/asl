@@ -46,7 +46,7 @@ update {
     }
 }
 split {
-    return (settings["restrictedAny"] || settings["any"]) && ((old.endCutscene != current.endCutscene) && (vars.endScreens.Contains(current.endCutscene)) && current.bricks != 0 && current.roomName == "cut\\2_tdos\\2_8smaugslair\\2_8smaugslair_outro.led_vfxart") ||
+    return ((settings["restrictedAny"] || settings["any"]) && ((old.cutscene != current.cutscene) && (current.cutscene == 1)) && current.bricks != 0 && current.roomName == "cut\\2_tdos\\2_8smaugslair\\2_8smaugslair_outro.led_vfxart") ||
     (settings["restrictedAny"] || settings["any"] || settings["freeplay"]) && (old.statusScreen != current.statusScreen && old.statusScreen == 1) ||
     settings["any"] && (old.levelLoad == 0 && current.levelLoad == 1 && current.statusScreen != 1 && vars.count != 2);
 }
