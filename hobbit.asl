@@ -62,7 +62,7 @@ update {
 }
 split {
     return ((settings["restrictedAny"] || settings["any"] || settings["roomSplits"]) && ((old.cutscene != current.cutscene) && (current.cutscene == 1)) && current.bricks != 0 && current.roomName == "cut\\2_tdos\\2_8smaugslair\\2_8smaugslair_outro.led_vfxart") ||
-    (settings["restrictedAny"] || settings["any"] || settings["freeplay"] || settings["roomSplits"]) && (old.statusScreen != current.statusScreen && old.statusScreen == 1) ||
+    (settings["restrictedAny"] || settings["any"] || settings["freeplay"] || settings["roomSplits"]) && (old.statusScreen != current.statusScreen && old.statusScreen == 1 && current.roomName == "hubcampfire_audio_scene") ||
     settings["any"] && (old.levelLoad == 0 && current.levelLoad == 1 && current.statusScreen != 1 && vars.count != 2) ||
     (settings["roomSplits"] && vars.roomValues.Contains(current.roomName) && current.roomNumber != old.roomNumber && current.resetPrevention == 0) ||
     (settings["roomSplits"] && (old.levelLoad == 0 && current.levelLoad == 1 && current.statusScreen != 1 && current.roomName != "2_6dolguldurd_tech_scene")) ||
@@ -70,3 +70,4 @@ split {
     (settings["roomSplits"] && current.roomName == "tier5_tech_scene" && old.cutscene == 0 && current.cutscene == 1)||
     (settings["roomSplits"] && current.roomNumber == 3 && current.roomName == "2_8smaugslair_midtro3a_vfxart" && old.cutscene == 0 && current.cutscene == 1);
 }
+
